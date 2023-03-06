@@ -4,6 +4,7 @@ services:
     container_name: ipfs-host1
     image: ipfs/kubo:latest
     volumes:
+      - ./clean-bootstrap.sh:/container-init.d/clean-bootstrap.sh
       - ./ipfs-host1/data:/data/ipfs
       - ./ipfs-host1/export:/export
     ports:
@@ -14,6 +15,7 @@ services:
     container_name: ipfs-host2
     image: ipfs/kubo:latest
     volumes:
+      - ./clean-bootstrap.sh:/container-init.d/clean-bootstrap.sh
       - ./ipfs-host2/data:/data/ipfs
       - ./ipfs-host2/export:/export
     ports:
