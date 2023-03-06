@@ -19,5 +19,14 @@ services:
       - ./ipfs-host2/data:/data/ipfs
       - ./ipfs-host2/export:/export
     ports:
-      - "127.0.0.1:8081:8080"
       - "127.0.0.1:5002:5001"
+
+  ipfs-host3:
+    container_name: ipfs-host3
+    image: ipfs/kubo:latest
+    volumes:
+      - ./clean-bootstrap.sh:/container-init.d/clean-bootstrap.sh
+      - ./ipfs-host3/data:/data/ipfs
+      - ./ipfs-host3/export:/export
+    ports:
+      - "127.0.0.1:5003:5001"
