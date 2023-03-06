@@ -36,13 +36,25 @@ networks:
     driver_opts:
       parent: eth0
       ipvlan_mode: l3
+    ipam:
+      driver: default
+      config:
+        - subnet: 192.168.1.0/24
   net2:
     driver: ipvlan
     driver_opts:
       parent: eth0
       ipvlan_mode: l3
+    ipam:
+      driver: default
+      config:
+        - subnet: 192.168.2.0/24
   net3:
     driver: ipvlan
     driver_opts:
       parent: eth0
       ipvlan_mode: l3
+    ipam:
+      driver: default
+      config:
+        - subnet: 192.168.3.0/24
