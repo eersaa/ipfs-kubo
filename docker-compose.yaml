@@ -7,9 +7,8 @@ services:
       - ./clean-bootstrap.sh:/container-init.d/clean-bootstrap.sh
       - ./ipfs-host1/data:/data/ipfs
       - ./ipfs-host1/export:/export
-    ports:
-      - "127.0.0.1:8080:8080"
-      - "127.0.0.1:5001:5001"
+    networks:
+      - net1
 
   ipfs-host2:
     container_name: ipfs-host2
@@ -18,8 +17,8 @@ services:
       - ./clean-bootstrap.sh:/container-init.d/clean-bootstrap.sh
       - ./ipfs-host2/data:/data/ipfs
       - ./ipfs-host2/export:/export
-    ports:
-      - "127.0.0.1:5002:5001"
+    networks:
+      - net2
 
   ipfs-host3:
     container_name: ipfs-host3
@@ -28,5 +27,22 @@ services:
       - ./clean-bootstrap.sh:/container-init.d/clean-bootstrap.sh
       - ./ipfs-host3/data:/data/ipfs
       - ./ipfs-host3/export:/export
-    ports:
-      - "127.0.0.1:5003:5001"
+    networks:
+      - net3
+
+networks:
+  net1:
+    driver: ipvlan
+    driver_opts:
+      parent: eth0
+      ipvlan_mode: l3
+  net2:
+    driver: ipvlan
+    driver_opts:
+      parent: eth0
+      ipvlan_mode: l3
+  net3:
+    driver: ipvlan
+    driver_opts:
+      parent: eth0
+      ipvlan_mode: l3
