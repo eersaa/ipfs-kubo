@@ -1,6 +1,7 @@
 version: '3'
 services:
   ipfs-host:
+    container_name: ipfs-host
     image: ipfs/kubo:latest
     volumes:
       - ./data:/data/ipfs
