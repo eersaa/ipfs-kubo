@@ -1,3 +1,4 @@
-data/*
-export/*
+# ignore files in ipfs-host1 and ipfs-host2 and all files in ipfs-host* except .gitkeep
+ipfs-host*/*
+
 !.gitkeep
