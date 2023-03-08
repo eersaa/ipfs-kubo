@@ -3,6 +3,8 @@ services:
   ipfs-host1:
     container_name: ipfs-host1
     image: ipfs/kubo:latest
+    environment:
+      - IPFS_SWARM_KEY_FILE=/export/swarm.key
     volumes:
       - ./clean-bootstrap.sh:/container-init.d/clean-bootstrap.sh
       - ./ipfs-host1/data:/data/ipfs
@@ -14,6 +16,8 @@ services:
   ipfs-host2:
     container_name: ipfs-host2
     image: ipfs/kubo:latest
+    environment:
+      - IPFS_SWARM_KEY_FILE=/export/swarm.key
     volumes:
       - ./clean-bootstrap.sh:/container-init.d/clean-bootstrap.sh
       - ./ipfs-host2/data:/data/ipfs
@@ -24,6 +28,8 @@ services:
   ipfs-host3:
     container_name: ipfs-host3
     image: ipfs/kubo:latest
+    environment:
+      - IPFS_SWARM_KEY_FILE=/export/swarm.key
     volumes:
       - ./clean-bootstrap.sh:/container-init.d/clean-bootstrap.sh
       - ./ipfs-host3/data:/data/ipfs
