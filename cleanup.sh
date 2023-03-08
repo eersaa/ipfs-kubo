@@ -10,4 +10,6 @@ for i in {1..3}; do
     cp ./swarm.key ./ipfs-host$i/export/swarm.key
 done
 
+cp ./webui.car ./ipfs-host1/export/webui.car
+
 echo "hello world" > ./ipfs-host1/export/hello
