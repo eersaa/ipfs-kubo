@@ -38,7 +38,6 @@ networks:
     ipam:
       config:
         - subnet: 192.168.1.0/24
-          gateway: 192.168.1.1
       options:
         parent: eth0
   net2:
@@ -49,7 +48,6 @@ networks:
       driver: default
       config:
         - subnet: 192.168.2.0/24
-          gateway: 192.168.2.1
       options:
         parent: eth0
   net3:
@@ -59,6 +57,5 @@ networks:
     ipam:
       config:
         - subnet: 192.168.3.0/24
-          gateway: 192.168.3.1
       options:
         parent: eth0
