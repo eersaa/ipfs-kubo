@@ -1,4 +1,4 @@
-version: '2'
+version: '3'
 services:
   ipfs-host1:
     container_name: ipfs-host1
@@ -7,8 +7,9 @@ services:
       - ./clean-bootstrap.sh:/container-init.d/clean-bootstrap.sh
       - ./ipfs-host1/data:/data/ipfs
       - ./ipfs-host1/export:/export
-    networks:
-      - net1
+    ports:
+      - "127.0.0.1:8080:8080"
+      - "127.0.0.1:5001:5001"
 
   ipfs-host2:
     container_name: ipfs-host2
@@ -17,8 +18,8 @@ services:
       - ./clean-bootstrap.sh:/container-init.d/clean-bootstrap.sh
       - ./ipfs-host2/data:/data/ipfs
       - ./ipfs-host2/export:/export
-    networks:
-      - net2
+    ports:
+      - "127.0.0.1:5002:5001"
 
   ipfs-host3:
     container_name: ipfs-host3
@@ -27,35 +28,5 @@ services:
       - ./clean-bootstrap.sh:/container-init.d/clean-bootstrap.sh
       - ./ipfs-host3/data:/data/ipfs
       - ./ipfs-host3/export:/export
-    networks:
-      - net3
-
-networks:
-  net1:
-    driver: ipvlan
-    driver_opts:
-      ipvlan_mode: l3
-    ipam:
-      config:
-        - subnet: 192.168.1.0/24
-      options:
-        parent: eth0
-  net2:
-    driver: ipvlan
-    driver_opts:
-      ipvlan_mode: l3
-    ipam:
-      driver: default
-      config:
-        - subnet: 192.168.2.0/24
-      options:
-        parent: eth0
-  net3:
-    driver: ipvlan
-    driver_opts:
-      ipvlan_mode: l3
-    ipam:
-      config:
-        - subnet: 192.168.3.0/24
-      options:
-        parent: eth0
+    ports:
+      - "127.0.0.1:5003:5001"
