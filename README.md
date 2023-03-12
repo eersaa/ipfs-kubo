@@ -10,7 +10,13 @@ Assumption is that the nodes are able to find themselves using the bootstrap ser
 
 Project represents a system where there are nodes that want to occasionally share some files with each other, but keep network restricted only the nodes that have the key for the network.
 
+# How to run the system
 
+1. Run `cleanup.sh` **Rename script to init?**
+2. Run the `docker-compose.yaml`
+3. Access the IPFS webui in address `localhost:5001/webui`
+
+If you want to access other nodes with webui go to Settings page and change the port matching the port of the node.
 
 # How to set up development environment
 
@@ -18,10 +24,15 @@ To be able to run the project you must have Docker and Docker Compose installed.
 
 ```console
 sudo apt update
-sudo apt install -y docker.io docker-compose
+sudo apt install docker.io docker-compose
+
+```
+
+```console
 sudo usermod -aG docker $USER
 
 ```
+
 Reboot your system after install.
 
 Installation instructions for all platforms: https://docs.docker.com/get-docker/.
