@@ -1,22 +1,24 @@
-- How to setup the project?
-  - Add vagrant configuration?
-
 # What is this project about?
-  - Core is the private ipfs network
 
-In this project we have set up private p2p network taking advantage of InterPlanetary File System IPFS [1].
+In this project we have set up private p2p network taking advantage of [InterPlanetary File System IPFS][1].
 
-Assumption is that the nodes are able to find themselves using the bootstrap server. After clients have found other clients via bootstrap server it is not necessary anymore. We did not get the bootstrapping actually work in this small scale system. We experimented with multiple network setups with Docker networking.
+Assumption is that the nodes are able to find themselves over the internet using the bootstrap server. After clients have found other clients via bootstrap server it is not necessary anymore.
 
 Project represents a system where there are nodes that want to occasionally share some files with each other, but keep network restricted only the nodes that have the key for the network.
 
+We experimented with multiple network setups with Docker networking. However, we did not get the bootstrapping work in network where the client nodes were isolated. Or Clients were able to connect to bootstrap server, but not to other clients.
+
 # How to run the system
 
-1. Run `cleanup.sh` **Rename script to init?**
+1. Run `cleanup.sh`
 2. Run the `docker-compose.yaml`
 3. Access the IPFS webui in address `localhost:5001/webui`
 
+You are ready to transfer files between the nodes and create directories to your private network.
+
 If you want to access other nodes with webui go to Settings page and change the port matching the port of the node.
+
+<img src=img/Port_change.png alt="Port_change.png" height="500">
 
 # How to set up development environment
 
@@ -55,8 +57,7 @@ Clone repository to some folder or copy the Vagrantfile and bootstrap.sh into fo
 
 You can ssh to virtual machine with `vagrant ssh` or export the ssh profile with `vagrant ssh-config` and save it to your `~./ssh/config` and use your preferred tools to connect to VM.
 
-
-# About branches
+## About branches
 This repository has three main branches at the moment.
 
 - master - will have the latest "stable" version combining functionalities
