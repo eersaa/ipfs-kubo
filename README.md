@@ -4,7 +4,13 @@
 # What is this project about?
   - Core is the private ipfs network
 
-In this project we have set up private p2p network taking advantage of IPFS InterPlanetary File System [1] . 
+In this project we have set up private p2p network taking advantage of InterPlanetary File System IPFS [1].
+
+Assumption is that the nodes are able to find themselves using the bootstrap server. After clients have found other clients via bootstrap server it is not necessary anymore. We did not get the bootstrapping actually work in this small scale system. We experimented with multiple network setups with Docker networking.
+
+Project represents a system where there are nodes that want to occasionally share some files with each other, but keep network restricted only the nodes that have the key for the network.
+
+
 
 # How to set up development environment
 
@@ -49,4 +55,4 @@ This repository has three main branches at the moment.
   - This repository has latest setup for networking of the containers to simulate the real world scenario.
 
 <!-- References -->
-[1]:
+[1]: https://ipfs.tech/
