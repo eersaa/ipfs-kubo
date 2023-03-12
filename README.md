@@ -41,7 +41,7 @@ Installation instructions for all platforms: https://docs.docker.com/get-docker/
 
 ## Option for Windows hosts
 
-Option is to run the Docker in virtual machine. You can automate the creation of virtual machine with Vagrant. You need to install VirtualBox for virtual machines and Vagrant for automation.
+Option is to run the Docker in virtual machine. You can automate the creation of virtual machine with Vagrant. You need to install [VirtualBox][2] for virtual machines and [Vagrant][3] for automation.
 
 Setup tested with:
  - Vagrant 2.3.4
@@ -68,3 +68,5 @@ This repository has three main branches at the moment.
 
 <!-- References -->
 [1]: https://ipfs.tech/
+[2]: https://www.virtualbox.org/
+[3]: https://www.vagrantup.com/
