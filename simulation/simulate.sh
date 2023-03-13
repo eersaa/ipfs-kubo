@@ -16,7 +16,7 @@ array_CD=()
 IFS=' '
 # read the output into an array
 output=($(printf "%s" "$UP_OUTPUT"))
-# loop through the array and print each fruit
+# loop through the array
 for i in "${!output[@]}"
 do
     if (($i == 1)); then

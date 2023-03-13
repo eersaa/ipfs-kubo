@@ -10,3 +10,4 @@ export/
 
 bootstrap_nodes.*
 
+.DS_Store
