@@ -84,13 +84,12 @@ services:
       - ipfs-bootstrap1
       - ipfs-bootstrap2
       - ipfs-bootstrap3
-    environment:
-      - IPFS_SWARM_KEY_FILE=/export/swarm.key
     volumes:
       - ./20clean-bootstrap.sh:/container-init.d/20clean-bootstrap.sh
       - ./ipfs-client2/data:/data/ipfs
       - ./ipfs-client2/export:/export
       - ./simulation:/simulation
+      - ./swarm.key:/data/ipfs/swarm.key
     ports:
       - "127.0.0.1:5006:5001"
 
@@ -101,12 +100,11 @@ services:
       - ipfs-bootstrap1
       - ipfs-bootstrap2
       - ipfs-bootstrap3
-    environment:
-      - IPFS_SWARM_KEY_FILE=/export/swarm.key
     volumes:
       - ./20clean-bootstrap.sh:/container-init.d/20clean-bootstrap.sh
       - ./ipfs-client3/data:/data/ipfs
       - ./ipfs-client3/export:/export
       - ./simulation:/simulation
+      - ./swarm.key:/data/ipfs/swarm.key
     ports:
       - "127.0.0.1:5007:5001"
