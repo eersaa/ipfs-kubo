@@ -7,3 +7,6 @@ ipfs-host*/*
 
 data/
 export/
+
+bootstrap_nodes.*
+
