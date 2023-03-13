@@ -64,8 +64,8 @@ services:
       - "127.0.0.1:5004:5001"
       - "4004:4001"
 
-  ipfs-client:
-    container_name: ipfs-client
+  ipfs-client1:
+    container_name: ipfs-client1
     image: ipfs/kubo:latest
     depends_on:
       - ipfs-bootstrap1
@@ -75,8 +75,42 @@ services:
       - IPFS_SWARM_KEY_FILE=/export/swarm.key
     volumes:
       - ./20clean-bootstrap.sh:/container-init.d/20clean-bootstrap.sh
-      - ./ipfs-client/data:/data/ipfs
-      - ./ipfs-client/export:/export
+      - ./ipfs-client1/data:/data/ipfs
+      - ./ipfs-client1/export:/export
       - ./simulation:/simulation
     ports:
       - "127.0.0.1:5005:5001"
+
+  ipfs-client2:
+    container_name: ipfs-client2
+    image: ipfs/kubo:latest
+    depends_on:
+      - ipfs-bootstrap1
+      - ipfs-bootstrap2
+      - ipfs-bootstrap3
+    environment:
+      - IPFS_SWARM_KEY_FILE=/export/swarm.key
+    volumes:
+      - ./20clean-bootstrap.sh:/container-init.d/20clean-bootstrap.sh
+      - ./ipfs-client2/data:/data/ipfs
+      - ./ipfs-client2/export:/export
+      - ./simulation:/simulation
+    ports:
+      - "127.0.0.1:5006:5001"
+
+  ipfs-client3:
+    container_name: ipfs-client3
+    image: ipfs/kubo:latest
+    depends_on:
+      - ipfs-bootstrap1
+      - ipfs-bootstrap2
+      - ipfs-bootstrap3
+    environment:
+      - IPFS_SWARM_KEY_FILE=/export/swarm.key
+    volumes:
+      - ./20clean-bootstrap.sh:/container-init.d/20clean-bootstrap.sh
+      - ./ipfs-client3/data:/data/ipfs
+      - ./ipfs-client3/export:/export
+      - ./simulation:/simulation
+    ports:
+      - "127.0.0.1:5007:5001"
