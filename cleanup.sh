@@ -7,6 +7,9 @@ done
 for i in {1..3}; do
     mkdir -p ./ipfs-host$i/data
     mkdir -p ./ipfs-host$i/export
+    cp ./swarm.key ./ipfs-host$i/export/swarm.key
 done
+
+cp ./webui.car ./ipfs-host1/export/webui.car
 
 echo "hello world" > ./ipfs-host1/export/hello
