@@ -7,14 +7,14 @@ services:
       - ipfs-bootstrap1
       - ipfs-bootstrap2
       - ipfs-bootstrap3
-    environment:
-      - IPFS_SWARM_KEY_FILE=/export/swarm.key
     volumes:
       - ./10import-webui.sh:/container-init.d/10import-webui.sh
       - ./20clean-bootstrap.sh:/container-init.d/20clean-bootstrap.sh
       - ./ipfs-client-webui/data:/data/ipfs
       - ./ipfs-client-webui/export:/export
       - ./simulation:/simulation
+      - ./webui.car:/export/webui.car
+      - ./swarm.key:/data/ipfs/swarm.key
     ports:
       - "127.0.0.1:8080:8080"
       - "127.0.0.1:5001:5001"
@@ -22,14 +22,13 @@ services:
   ipfs-bootstrap1:
     container_name: ipfs-bootstrap1
     image: ipfs/kubo:latest
-    environment:
-      - IPFS_SWARM_KEY_FILE=/export/swarm.key
     volumes:
       - ./20clean-bootstrap.sh:/container-init.d/20clean-bootstrap.sh      
       - ./30log-boostrap.sh:/container-init.d/30log-boostrap.sh
       - ./ipfs-bootstrap1/data:/data/ipfs
       - ./ipfs-bootstrap1/export:/export
       - ./simulation:/simulation
+      - ./swarm.key:/data/ipfs/swarm.key
     ports:
       - "127.0.0.1:5002:5001"
       - "4002:4001"
@@ -37,14 +36,13 @@ services:
   ipfs-bootstrap2:
     container_name: ipfs-bootstrap2
     image: ipfs/kubo:latest
-    environment:
-      - IPFS_SWARM_KEY_FILE=/export/swarm.key
     volumes:
       - ./20clean-bootstrap.sh:/container-init.d/20clean-bootstrap.sh      
       - ./30log-boostrap.sh:/container-init.d/30log-boostrap.sh
       - ./ipfs-bootstrap2/data:/data/ipfs
       - ./ipfs-bootstrap2/export:/export
       - ./simulation:/simulation
+      - ./swarm.key:/data/ipfs/swarm.key
     ports:
       - "127.0.0.1:5003:5001"
       - "4003:4001"
@@ -52,14 +50,13 @@ services:
   ipfs-bootstrap3:
     container_name: ipfs-bootstrap3
     image: ipfs/kubo:latest
-    environment:
-      - IPFS_SWARM_KEY_FILE=/export/swarm.key
     volumes:
       - ./20clean-bootstrap.sh:/container-init.d/20clean-bootstrap.sh      
       - ./30log-boostrap.sh:/container-init.d/30log-boostrap.sh
       - ./ipfs-bootstrap3/data:/data/ipfs
       - ./ipfs-bootstrap3/export:/export
       - ./simulation:/simulation
+      - ./swarm.key:/data/ipfs/swarm.key
     ports:
       - "127.0.0.1:5004:5001"
       - "4004:4001"
@@ -71,13 +68,12 @@ services:
       - ipfs-bootstrap1
       - ipfs-bootstrap2
       - ipfs-bootstrap3
-    environment:
-      - IPFS_SWARM_KEY_FILE=/export/swarm.key
     volumes:
       - ./20clean-bootstrap.sh:/container-init.d/20clean-bootstrap.sh
       - ./ipfs-client1/data:/data/ipfs
       - ./ipfs-client1/export:/export
       - ./simulation:/simulation
+      - ./swarm.key:/data/ipfs/swarm.key
     ports:
       - "127.0.0.1:5005:5001"
 
