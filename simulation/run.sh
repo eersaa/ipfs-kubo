@@ -33,5 +33,7 @@ sleep 60
 docker exec ipfs-bootstrap1 /bin/sh /simulation/bootstrap_nodes.sh
 docker exec ipfs-bootstrap2 /bin/sh /simulation/bootstrap_nodes.sh
 docker exec ipfs-bootstrap3 /bin/sh /simulation/bootstrap_nodes.sh
-docker exec ipfs-client /bin/sh /simulation/bootstrap_nodes.sh
 docker exec ipfs-client-webui /bin/sh /simulation/bootstrap_nodes.sh
+docker exec ipfs-client1 /bin/sh /simulation/bootstrap_nodes.sh
+docker exec ipfs-client2 /bin/sh /simulation/bootstrap_nodes.sh
+docker exec ipfs-client3 /bin/sh /simulation/bootstrap_nodes.sh
