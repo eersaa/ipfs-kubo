@@ -10,8 +10,10 @@ We experimented with multiple network setups with Docker networking. However, we
 
 # How to run the system
 
-1. Run `run.sh`
-2. Access the IPFS web UI in address `localhost:5001/webui`
+1. Run `run.sh`. This script will initialize and start the system. When you want to stop, shutdown the system and clean up afterwards with `down.sh`
+2. You can execute file transfer between nodes by running `simulate.sh`. This script generates random files and transfers them between the nodes in the network.
+
+The above scripts are located in the `simulation` directory.
 
 [Port forwarding]:#port-forwarding
 
