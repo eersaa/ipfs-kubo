@@ -28,6 +28,8 @@ do
     fi
 done
 
+sleep 60
+
 docker exec ipfs-bootstrap1 /bin/sh /simulation/bootstrap_nodes.sh
 docker exec ipfs-bootstrap2 /bin/sh /simulation/bootstrap_nodes.sh
 docker exec ipfs-bootstrap3 /bin/sh /simulation/bootstrap_nodes.sh
