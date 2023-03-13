@@ -12,7 +12,10 @@ We experimented with multiple network setups with Docker networking. However, we
 
 1. Run `cleanup.sh`
 2. Run `docker-compose.yaml`
-3. Access the IPFS web UI in address `localhost:5001/webui`
+(3. If using VM [Port forwarding][])
+1. Access the IPFS web UI in address `localhost:5001/webui`
+
+[Port forwarding]:#port-forwarding
 
 You are ready to transfer files between the nodes and create directories to your private network.
 
@@ -65,6 +68,12 @@ vagrant plugin install vagrant-vbguest
 Clone repository to some folder or copy the Vagrantfile and bootstrap.sh into folder. Open terminal in same folder and run `vagrant up`. Vagrant will set up the environment for you.
 
 You can ssh to virtual machine with `vagrant ssh` or export the ssh profile with `vagrant ssh-config` and save it to your `~./ssh/config` and use your preferred tools to connect to VM.
+
+### Port forwarding
+
+If using VSCode you can use integrated port forwarding. Otherwise you need to forward the ports from the VM.
+
+![Forwarded_ports.png](img/Forwarded_ports.png)
 
 <!-- References -->
 [1]: https://ipfs.tech/
