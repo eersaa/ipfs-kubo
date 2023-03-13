@@ -1,39 +1,82 @@
 version: '3'
 services:
-  ipfs-host1:
-    container_name: ipfs-host1
+  ipfs-client-webui:
+    container_name: ipfs-client-webui
     image: ipfs/kubo:latest
+    depends_on:
+      - ipfs-bootstrap1
+      - ipfs-bootstrap2
+      - ipfs-bootstrap3
     environment:
       - IPFS_SWARM_KEY_FILE=/export/swarm.key
     volumes:
       - ./10import-webui.sh:/container-init.d/10import-webui.sh
       - ./20clean-bootstrap.sh:/container-init.d/20clean-bootstrap.sh
-      - ./ipfs-host1/data:/data/ipfs
-      - ./ipfs-host1/export:/export
+      - ./ipfs-client-webui/data:/data/ipfs
+      - ./ipfs-client-webui/export:/export
+      - ./simulation:/simulation
     ports:
       - "127.0.0.1:8080:8080"
       - "127.0.0.1:5001:5001"
 
-  ipfs-host2:
-    container_name: ipfs-host2
+  ipfs-bootstrap1:
+    container_name: ipfs-bootstrap1
     image: ipfs/kubo:latest
     environment:
       - IPFS_SWARM_KEY_FILE=/export/swarm.key
     volumes:
-      - ./20clean-bootstrap.sh:/container-init.d/20clean-bootstrap.sh
-      - ./ipfs-host2/data:/data/ipfs
-      - ./ipfs-host2/export:/export
+      - ./20clean-bootstrap.sh:/container-init.d/20clean-bootstrap.sh      
+      - ./30log-boostrap.sh:/container-init.d/30log-boostrap.sh
+      - ./ipfs-bootstrap1/data:/data/ipfs
+      - ./ipfs-bootstrap1/export:/export
+      - ./simulation:/simulation
     ports:
       - "127.0.0.1:5002:5001"
+      - "4002:4001"
 
-  ipfs-host3:
-    container_name: ipfs-host3
+  ipfs-bootstrap2:
+    container_name: ipfs-bootstrap2
     image: ipfs/kubo:latest
     environment:
       - IPFS_SWARM_KEY_FILE=/export/swarm.key
     volumes:
-      - ./20clean-bootstrap.sh:/container-init.d/20clean-bootstrap.sh
-      - ./ipfs-host3/data:/data/ipfs
-      - ./ipfs-host3/export:/export
+      - ./20clean-bootstrap.sh:/container-init.d/20clean-bootstrap.sh      
+      - ./30log-boostrap.sh:/container-init.d/30log-boostrap.sh
+      - ./ipfs-bootstrap2/data:/data/ipfs
+      - ./ipfs-bootstrap2/export:/export
+      - ./simulation:/simulation
     ports:
       - "127.0.0.1:5003:5001"
+      - "4003:4001"
+
+  ipfs-bootstrap3:
+    container_name: ipfs-bootstrap3
+    image: ipfs/kubo:latest
+    environment:
+      - IPFS_SWARM_KEY_FILE=/export/swarm.key
+    volumes:
+      - ./20clean-bootstrap.sh:/container-init.d/20clean-bootstrap.sh      
+      - ./30log-boostrap.sh:/container-init.d/30log-boostrap.sh
+      - ./ipfs-bootstrap3/data:/data/ipfs
+      - ./ipfs-bootstrap3/export:/export
+      - ./simulation:/simulation
+    ports:
+      - "127.0.0.1:5004:5001"
+      - "4004:4001"
+
+  ipfs-client:
+    container_name: ipfs-client
+    image: ipfs/kubo:latest
+    depends_on:
+      - ipfs-bootstrap1
+      - ipfs-bootstrap2
+      - ipfs-bootstrap3
+    environment:
+      - IPFS_SWARM_KEY_FILE=/export/swarm.key
+    volumes:
+      - ./20clean-bootstrap.sh:/container-init.d/20clean-bootstrap.sh
+      - ./ipfs-client/data:/data/ipfs
+      - ./ipfs-client/export:/export
+      - ./simulation:/simulation
+    ports:
+      - "127.0.0.1:5005:5001"

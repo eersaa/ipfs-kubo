@@ -2,3 +2,8 @@
 ipfs-host*/*
 
 !.gitkeep
+
+*.dat
+
+data/
+export/
