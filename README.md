@@ -2,18 +2,16 @@
 
 In this project we have set up private p2p network taking advantage of [InterPlanetary File System IPFS][1].
 
-Assumption is that the nodes are able to find themselves over the internet using the bootstrap server. After clients have found other clients, bootstrap server it is not necessary anymore and clients can communicate directly with each other.
+Client nodes in the network are able to find themselves over the internet using the bootstrap server. After clients have found other clients, bootstrap server it is not necessary anymore and clients can communicate directly with each other.
 
 Project represents a system where there are nodes that want to occasionally share some files with each other, but keep network restricted only the nodes that have the key for the network.
 
-We experimented with multiple network setups with Docker networking. However, we did not get the bootstrapping work in network where the client nodes were isolated. Or Clients were able to connect to bootstrap server, but not to other clients.
+We experimented with multiple network setups with Docker networking. However, we did not get the bootstrapping to work in a network where the client nodes were isolated. In this project the client nodes are running on the same local network, in which the bootstrap nodes are not needed to discover peers. We decided to include the bootstrap nodes in this setup anyway to demonstrate the structure of the network in an actual use-case.
 
 # How to run the system
 
-1. Run `cleanup.sh`
-2. Run `docker-compose.yaml`
-(3. If using VM [Port forwarding][])
-1. Access the IPFS web UI in address `localhost:5001/webui`
+1. Run `run.sh`
+2. Access the IPFS web UI in address `localhost:5001/webui`
 
 [Port forwarding]:#port-forwarding
 
@@ -26,30 +24,15 @@ If you want to access other nodes with web UI go to Settings page and change the
 # About project files
 `cleanup.sh` is script which clears and creates the folders for local data of IPFS nodes.
 
-`10import-webui.sh` and `20clean-bootstrap.sh` are a configuration scripts for the IPFS nodes.
+`10import-webui.sh`, `20clean-bootstrap.sh` and `30log-bootstrap.sh` are a configuration scripts for the IPFS nodes.
 
 `swarm.key` is the private key that the nodes authenticate itself to private network.
 
 # How to set up development environment
 
-To be able to run the project you must have Docker and Docker Compose installed. If you are running Ubuntu linux you can run following commands to get packets installed.
-
-```console
-sudo apt update
-sudo apt install docker.io docker-compose
-
-```
-
-Add your user to docker group and you don't need to write sudo for every docker command.
-
-```console
-sudo usermod -aG docker $USER
-
-```
+To be able to run the project you must have Docker and Docker Compose installed. Follow the installation guide in Docker documentation: https://docs.docker.com/engine/
 
 Reboot your system after install.
-
-Installation instructions for all platforms: https://docs.docker.com/get-docker/.
 
 ## Option: VM + Docker
 
